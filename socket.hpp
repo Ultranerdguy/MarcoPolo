@@ -91,6 +91,21 @@ public:
     }
     return output;
   }
+
+  template <typename TSOCK_ADDR>
+  std::string ReadFrom(TSOCK_ADDR& clientInfo)
+  {
+    std::string output;
+    ssize_t readLength;
+    char buffer[1024];
+    socklen_t clientInfoLength = sizeof(TSOCK_ADDR);
+    while ((readLength = recvfrom(m_socket_fd, buffer, 1024, 0, (sockaddr*)&clientInfo, &clientInfoLength)))
+    {
+      output.append(buffer, readLength);
+      if (readLength != 1024) break;
+    }
+    return output;
+  }
   
 private:
   int m_socket_fd = 0;

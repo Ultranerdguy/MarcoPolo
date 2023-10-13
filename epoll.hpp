@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <sys/epoll.h>
+#include <unistd.h>
 
 class EPoll
 {
