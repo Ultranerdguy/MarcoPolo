@@ -1,0 +1,7 @@
+# Executables
+marco
+polo
+
+# Editor files and directories
+.vscode/
+*.swp
